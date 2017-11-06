@@ -123,8 +123,11 @@ def findTabletName():
     return ret.strip()
 
 def currentLEDState(ledPath):
-    with open(ledPath, "r") as fp:
-        return fp.read().strip()
+    try:
+        with open(ledPath, "r") as fp:
+            return fp.read().strip()
+    except IOError:
+        raise RuntimeError("LED Status file went away.")
 
 def monitorLED(ledPath, oldMode, debug=False):
     currentMode = currentLEDState(ledPath)
