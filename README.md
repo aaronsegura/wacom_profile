@@ -56,6 +56,9 @@ these options are the same options you would use to define actions with xsetwaco
 
 See the example config.cfg for a working example.
 
+If no profile is provided on the command line with -p, the script will look for a
+profile called "defaults".
+
 Just Turrible
 -------------
 * Unpredictable results if using multiple tablets.  Do people even do that?
