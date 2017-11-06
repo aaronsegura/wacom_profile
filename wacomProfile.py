@@ -16,9 +16,9 @@ def parseArgs():
 
     parser.add_argument("-c", 
                             dest="configFile",
-                            help="Configuration File.  Default $HOME/.wacomWrap",
+                            help="Configuration File.  Default $HOME/.wacomProfile",
                             metavar="/path/to/file.ini",
-                            default="%s/%s" % (os.environ["HOME"], "/.wacomWrap"),
+                            default="%s/%s" % (os.environ["HOME"], "/.wacomProfile"),
                             type=str)
 
     parser.add_argument("-p",
@@ -71,11 +71,13 @@ def getProfile(profile, configFile):
 
     for mode in profileConfig:
         section = '%s:%s' % (profile, mode)
+
+
         if configFile.has_section(section):
-            if configFile.has_option(section, 'scroll_up'):
-                profileConfig[mode]['up'] = configFile.get(section, 'scroll_up')
-            if configFile.has_option(section, 'scroll_down'):
-                profileConfig[mode]['down'] = configFile.get(section, 'scroll_down')
+            options = configFile.options(section)
+            for opt in options:
+                profileConfig[mode][opt] = configFile.get(section, opt)
+                
 
     return profileConfig
 
@@ -143,31 +145,29 @@ def monitorLED(ledPath, oldMode, debug=False):
 
 def updateTablet(tabletName, mode, profileConfig, debug=False):
 
-    cmd = ["xsetwacom", "--set", tabletName, "AbsWheelUp"]
+    actions = profileConfig[mode]
 
-    if "up" in profileConfig[mode]:
-        cmd.append(profileConfig[mode]["up"])
+    for action in actions:
+        cmd = ["xsetwacom", "--set", tabletName]
 
-    if args.debug:
-        print "Running: %s" % " ".join(cmd)
+        if " " in action:
+            cmd.extend(action.split(" "))
+        else:
+            cmd.append(action)
 
-    output = subprocess.check_output(cmd)
+        if " " in actions[action]:
+            cmd.extend(actions[action].split(" "))
+        else:
+            if actions[action]:
+                cmd.append(actions[action])
 
-    if args.debug:
-        print "Output: %s" % output
+        if args.debug:
+            print "Running: %s" % " ".join(cmd)
 
-    cmd = ["xsetwacom", "--set", tabletName, "AbsWheelDown"]
+        output = subprocess.check_output(cmd)
 
-    if "down" in profileConfig[mode]:
-        cmd.append(profileConfig[mode]["down"])
-
-    if args.debug:
-        print "Running: %s" % " ".join(cmd)
-
-    output = subprocess.check_output(cmd)
-
-    if args.debug:
-        print "Output: %s" % output
+        if args.debug:
+            print "Output: %s" % output
 
 def main(args):
 
