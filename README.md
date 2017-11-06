@@ -1,7 +1,7 @@
 # wacomProfile
 
 This python script will allow you to control the modes of your Wacom Intuos Pro tablet
-in linux by clicking the button in the middle of the touch wheel.
+touch ring in linux by clicking the button in the middle of the ring.
 
 	usage: wacomProfile.py [-h] [-c /path/to/file.ini] [-p PROFILE] [-x] [-d]
 
