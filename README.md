@@ -37,19 +37,19 @@ Profiles are defined in the config file in the section headers.  For example:
 This section header defines the actions that will be taken when '-p krita' is passed
 in and the LED is in position 0 (upper-left corner).  LED Positions:
 
-0 - Upper-left
-1 - Upper-right
-2 - Lower-right
-3 - Lower-left
-
+	0 - Upper-left
+	1 - Upper-right
+	2 - Lower-right
+	3 - Lower-left
+	
 You don't have to define all LED positions.  Any positions left undefined are set to
 the pad defaults, which are Button +4 and Button +5
 
 Valid options in each section are "scroll\_up" and "scroll\_down".  Valid values for
 these options are the same options you would use to define actions with xsetwacom:
 
-	scroll\_up = key +up
-	scroll\_down = key +down
+	scroll_up = key +up
+	scroll_down = key +down
 
 
 Just Turrible
