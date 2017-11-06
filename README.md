@@ -9,7 +9,7 @@ touch ring in linux by clicking the button in the middle of the ring.
 
 	optional arguments:
   	-h, --help            show this help message and exit
-  	-c /path/to/file.ini  Configuration File. Default $HOME/.wacomWrap
+  	-c /path/to/file.ini  Configuration File. Default $HOME/.wacomProfile
   	-p PROFILE            Profile to execute.
  	-x                    Apply profile for current LED state and exit.
   	-d                    Debug - Crank up the output
