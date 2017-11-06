@@ -11,7 +11,7 @@ from ConfigParser import ConfigParser
 
 def parseArgs():
     parser = argparse.ArgumentParser(
-                    description='Handle Wacom Intuos Pro 5 ring '
+                    description='Handle Wacom Intuos Pro 5 mode '
                                 'function swapping.  You know, for kids.')
 
     parser.add_argument("-c", 
