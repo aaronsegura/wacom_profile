@@ -1,4 +1,4 @@
-#!/usr/bin/env `which python`
+#!/usr/bin/env python
 
 import argparse
 import re
