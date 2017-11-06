@@ -38,21 +38,37 @@ Profiles are defined in the config file in the section headers.  For example:
 [krita:0]
 
 This section header defines the actions that will be taken when '-p krita' is passed
-in and the LED is in position 0 (upper-left corner).  LED Positions:
+in and the LED is in position 0 (upper-left corner).  
+
+LED Positions:
 
 	0 - Upper-left
 	1 - Upper-right
 	2 - Lower-right
 	3 - Lower-left
 	
-You don't have to define all LED positions.  Any positions left undefined are set to
-the pad defaults, which are Button +4 and Button +5
+Buttons:
 
-Valid options in each section are "scroll\_up" and "scroll\_down".  Valid values for
-these options are the same options you would use to define actions with xsetwacom:
+	Button 2 - Upper top button
+   	Button 3 - Middle top Button
+   	Button 8 - Lower top Button
 
-	scroll_up = key +up
-	scroll_down = key +down
+   	Button 1 - Wheel Button
+   	
+   	Button 9 -  Upper bottom button
+   	Button 10 - Middle bottom button
+   	Button 11 - Lower bottom button
+
+ TouchRing Actions:
+
+   	AbsWheelUp - Scroll Up
+   	AbsWheelDown - Scroll Down
+
+You don't have to define all LED positions.  No action will be taken if you select
+a mode that isn't defined.
+
+Valid options in each section are either buttons or touchring actions.  If you define
+a blank action (eg, "button 1 = "), that item is reset to tablet defaults.
 
 See the example config.cfg for a working example.
 
@@ -62,5 +78,4 @@ profile called "defaults".
 Just Turrible
 -------------
 * Unpredictable results if using multiple tablets.  Do people even do that?
-* Need to be able to define buttons, too.  Why not?  It's linux.
 * USB Stuff is mostly untested in most situations.  It worked once for me, so it might work for you.  Submit a bug if not.
