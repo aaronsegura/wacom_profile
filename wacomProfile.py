@@ -35,7 +35,8 @@ def parseArgs():
 
     parser.add_argument("-d",
                             dest="debug",
-                            action="store_true")
+                            action="store_true",
+                            help="Debug - Crank up the output")
 
     return parser.parse_args()
 
