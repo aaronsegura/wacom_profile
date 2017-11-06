@@ -26,6 +26,9 @@ lsusb and copying the ID from the output there.  See the example config.cfg file
 
 You must also supply at least one stanza for each profile you want to create.
 
+	[defaults]
+	device_id = XXXX:XXXX
+
 
 Profiles
 --------
@@ -51,8 +54,10 @@ these options are the same options you would use to define actions with xsetwaco
 	scroll_up = key +up
 	scroll_down = key +down
 
+See the example config.cfg for a working example.
 
 Just Turrible
 -------------
 * Unpredictable results if using multiple tablets.  Do people even do that?
 * Need to be able to define buttons, too.  Why not?  It's linux.
+* USB Stuff is mostly untested in most situations.  It worked once for me, so it might work for you.  Submit a bug if not.
